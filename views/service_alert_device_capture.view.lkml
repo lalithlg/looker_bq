@@ -48,7 +48,7 @@ view: service_alert_device_capture {
   }
   dimension: service_time {
     type: string
-    sql: ${TABLE}.service_time ;;
+    sql: to_char(${avg_txn}, 'YYYY-MM-DD');;
   }
   dimension: sigma {
     type: number
@@ -57,10 +57,12 @@ view: service_alert_device_capture {
   dimension: sigma_fp {
     type: number
     sql: ${TABLE}.sigma_fp ;;
+
   }
   dimension: sigma_lbl {
     type: number
-    sql: ${TABLE}.sigma_lbl ;;
+   # sql: ${TABLE}.sigma_lbl ;;
+    sql: IFNULL((${sum_transactions} - ${avg_txn_device}) / NULLIF(${stdd_txn_device},0),0) ;;
   }
   dimension: sigma_lbl_fp {
     type: number
@@ -146,6 +148,7 @@ view: service_alert_device_capture {
     type: number
     sql: ${TABLE}.week_cnt ;;
   }
+
   measure: count {
     type: count
     drill_fields: [sub_name]
