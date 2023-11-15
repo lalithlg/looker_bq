@@ -94,10 +94,16 @@ view: service_alert_daily_mdr_by_period {
   dimension: sum_transactions {
     type: number
     sql: ${TABLE}.sum_transactions ;;
+    html: {% if value >= 0 %}
+    <b><p style="color: green;   text-align:right">{{ rendered_value }}</p></b>
+    {% else %}
+    <b><p style="color: red;   text-align:right">{{ rendered_value }}</p></b>
+    {% endif %} ;;
   }
   dimension: week_cnt {
     type: number
-    sql: ${TABLE}.week_cnt ;;
+    #sql: ${TABLE}.week_cnt ;;
+    sql: round((${avg_txn_device_tp} ), 5)::float ;;
   }
   dimension: concatenated_name {
     type: string
@@ -152,7 +158,8 @@ view: service_alert_daily_mdr_by_period {
 
   measure: stdd_txn_device_fp_1 {
     type: number
-    sql: ROUND(STDDEV(${sum_fp_transactions} / ${sum_transactions}),5) ;;
+    #sql: ROUND(STDDEV(${sum_fp_transactions} / ${sum_transactions}),5) ;;
+    sql: round((${avg_txn_device_tp_1} ), 5)::float ;;
   }
 
   measure: stdd_txn_device_tp_1 {

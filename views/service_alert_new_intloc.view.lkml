@@ -31,7 +31,8 @@ view: service_alert_new_intloc {
   }
   dimension: subscriber_id {
     type: number
-    sql: ${TABLE}.subscriber_id ;;
+   sql: ${TABLE}.subscriber_id ;;
+
   }
   measure: count {
     type: count
@@ -46,7 +47,7 @@ view: service_alert_new_intloc {
   measure: new_intloc_count {
     type: count_distinct
     label: "New Intloc Count"
-    sql: CASE WHEN ${TABLE}."IS_NEW" = 'Yes' THEN 1 ELSE 0 END ;;
+    sql:  ${TABLE}."IS_NEW" ;;
   }
 
   measure: distinct_subscribr_count {

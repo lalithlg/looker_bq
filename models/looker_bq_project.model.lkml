@@ -39,7 +39,7 @@ explore: service_alert_daily_mdr_txn_int {}
 explore: sub_list {}
 
 explore: service_alert_new_first_party {
-  label: "service alert new first party"
+  label: "Service Alert New First Party"
   description: "Explore based on the service_alert_device_capture view."
 
   join: service_alert_device_capture {
