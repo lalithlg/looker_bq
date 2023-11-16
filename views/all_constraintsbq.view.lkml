@@ -8,7 +8,6 @@ view: all_constraintsbq {
     sql: ${TABLE}.id ;;
   }
   dimension: email {
-    primary_key: yes
     type: string
     sql: ${TABLE}.email ;;
   }
