@@ -104,6 +104,7 @@ view: service_alert_daily_mdr_by_period {
     type: number
     #sql: ${TABLE}.week_cnt ;;
     sql: round((${avg_txn_device_tp} ), 5)::float ;;
+
   }
   dimension: concatenated_name {
     type: string
