@@ -40,4 +40,6 @@ explore: new_dt_service_alert_daily_mdr_today {
 explore: new_sql_dt_from__service_alert_new_intloc {
   hidden: no
 }
-# explore: sql_dt_using_joins  {hidden:no}
+explore: sample_dt {
+  hidden: no
+}
